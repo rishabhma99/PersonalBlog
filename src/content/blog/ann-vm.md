@@ -2,7 +2,7 @@
 title: 'An instruction set for ANNs -- building a VM for virtual machines'
 description: 'An of the cuff thought I had'
 pubDate: 'Jan 20 2024'
-heroImage: '/public/nn.png'
+heroImage: '/PersonalBlog/public/nn.png'
 ---
 
 <i>To preface this article, I have little-to-no professional experience with machine learning, so take
