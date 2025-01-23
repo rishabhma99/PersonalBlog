@@ -24,7 +24,7 @@
 }
 @font-face {
 	font-family: 'Atkinson';
-	src: url('/PersonalBlog/fonts/atkinson-bold.woff') format('woff');
+	src: url('/PersonalBlogfonts/atkinson-bold.woff') format('woff');
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
@@ -59,19 +59,19 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 2.052em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 1.841em;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 1.553em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.363em;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 1.05em;
 }
 strong,
 b {

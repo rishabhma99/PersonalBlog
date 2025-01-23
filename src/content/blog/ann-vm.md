@@ -13,7 +13,7 @@ as I don't get a chance to explore random ideas I have since graduatin.  I have 
 skill to have some revolutionary, useful insight; I simply want to spitball and theorycraft
 through fun ideas without thinking of practical reasons why not to and why the idea is uninformed</i>
 
-## Preamble
+## Introduction
 
 I was reading some opinion's regarding the future of Artificial-intelligence, given the
 extraordinary capabilities of LLM and how quickly they became ever-present. They were dicussing
