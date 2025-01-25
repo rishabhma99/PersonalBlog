@@ -5,6 +5,12 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://rishabhma99.github.io/',
-	base: '/PersonalBlog'
+  site: 'https://rishabhma99.github.io/',
+  base: '/PersonalBlog',
+  integrations: [mdx()],
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+    },
+  }
 });

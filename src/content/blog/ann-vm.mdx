@@ -4,6 +4,9 @@ description: 'An of the cuff thought I had'
 pubDate: 'Jan 20 2024'
 heroImage: '/PersonalBlog/nn.png'
 ---
+import Latex from '../../components/Latex.astro';
+import { Code } from 'astro:components';
+
 
 <i>To preface this article, I have little-to-no professional experience with machine learning, so take
 this article's with the smallest grain of salt. I have some background with college, internships,
@@ -44,3 +47,62 @@ The uniformed thought/hypthesis I had is that there a wastage due to the brain m
 more competing factors for a running program.
 
 ## Idea
+export const f1 = 'Y = f(w^{T}\\vec{x} + \\vec{b})';
+export const f2 = '\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}';
+
+Starting with the simplest possible function: 
+
+Let <Latex formula='w,x \in \R^n'/>, <Latex formula='b \in \R'/>, <Latex formula='f:R \to R \in C^{-1}(\R)'/>. Technically, this is over
+numbers representable by floating point and not R, but this representation is close enough
+
+<Latex formula={f1}/>
+
+We can represent this function as an instruction <Latex formula='dot\space a \space b \space c'/>, which takes two registers a and b
+and performs a dot product on them and stores the result into c.
+
+```cpp
+int dot(int* v1, int* v2, int num) {
+    int total = 0;
+    for (int i = 0; i < num; i++) {
+        total += v1[i] * v2[i];
+    }
+}
+```
+
+```asm
+dot(int*, int*, int):
+        sub     sp, sp, #48
+        str     x0, [sp, 24]
+        str     x1, [sp, 16]
+        str     w2, [sp, 12]
+        str     wzr, [sp, 44]
+        str     wzr, [sp, 40]
+        b       .L2
+.L3:
+        ldrsw   x0, [sp, 40]
+        lsl     x0, x0, 2
+        ldr     x1, [sp, 24]
+        add     x0, x1, x0
+        ldr     w1, [x0]
+        ldrsw   x0, [sp, 40]
+        lsl     x0, x0, 2
+        ldr     x2, [sp, 16]
+        add     x0, x2, x0
+        ldr     w0, [x0]
+        mul     w0, w1, w0
+        ldr     w1, [sp, 44]
+        add     w0, w1, w0
+        str     w0, [sp, 44]
+        ldr     w0, [sp, 40]
+        add     w0, w0, 1
+        str     w0, [sp, 40]
+.L2:
+        ldr     w1, [sp, 40]
+        ldr     w0, [sp, 12]
+        cmp     w1, w0
+        blt     .L3
+        brk #1000
+```
+
+In theory, this would be carried out by a single instruction <Latex formula='dot\space a \space b \space c'/>. However, in practice, it seems
+difficult to imagine that being an atomic instruction that the CPU could carry out.
