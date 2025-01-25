@@ -6,6 +6,9 @@ heroImage: '/PersonalBlog/nn.png'
 ---
 import Latex from '../../components/Latex.astro';
 import { Code } from 'astro:components';
+import { Image } from 'astro:assets';
+
+import CpuCore from '../../../public/cpucore.png';
 
 
 ## Introduction
@@ -71,9 +74,6 @@ dot(int*, int*, int):
 ```
 
 In theory, this would be carried out by a single instruction <Latex formula='dot\space a \space b \space c'/>. However, in practice, it seems
-<<<<<<< HEAD
-difficult to imagine that being an atomic instruction that the CPU could carry out.
-=======
 difficult to imagine that being an atomic instruction that the CPU could carry out. Especially, since a dot-product is composed of several atomic 'cpu'
 operations i.e add and mul. So it begs the question of what value does representing the operation as 'dot' bring?
 
@@ -83,4 +83,12 @@ So we can do two optimizations at the computing level:
 1. Parallelize them
 2. Use the same instruction for each the paralleled operations
 
->>>>>>> 987b379 (-)
+<h3>Architecture to make this work:</h3>
+
+The problem with parallelizing these operations across vectors of a large n, is that we are constrained by the number of cores on a CPU. Parallelizing
+does not provide value unless we can actually guarantee its concurrent, since for this type of operation the cpu will seldom be idle.
+
+So instead, say we increase the number of cores on the processer -- what do we have to give up to make this optimization? (otherwise engineers would have already done this)
+
+
+<Image src={CpuCore} alt="Cpu Cores." />
