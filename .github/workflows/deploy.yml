@@ -28,11 +28,6 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Upload build output
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist # or ./build, depending on your project
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
