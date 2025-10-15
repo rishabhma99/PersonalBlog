@@ -64,7 +64,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <a className="see-more" href="/projects">
+        <a className="see-more" href="projects">
           See more →
         </a>
       </section>
@@ -91,7 +91,7 @@ export default function Home() {
           ))}
         </ul>
         <div className="posts-footer">
-          <a className="see-more" href="/archive">
+          <a className="see-more" href="archive">
             See more →
           </a>
         </div>
