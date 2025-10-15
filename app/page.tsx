@@ -1,4 +1,5 @@
 import { posts } from "./data/posts";
+import { projects } from "./data/projects";
 
 export default function Home() {
   return (
@@ -50,6 +51,30 @@ export default function Home() {
               </p>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section className="projects" id="projects">
+        <h2>Recent projects</h2>
+        <div className="projects-grid">
+          {projects.map((project) => (
+            <article key={project.name} className="project-card">
+              <div className="project-heading">
+                <h3>{project.name}</h3>
+                {project.url ? (
+                  <a className="project-link" href={project.url}>
+                    Visit ↗
+                  </a>
+                ) : null}
+              </div>
+              <p>{project.summary}</p>
+              <ul className="tech-list">
+                {project.tech.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </section>
 

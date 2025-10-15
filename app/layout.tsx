@@ -16,12 +16,13 @@ export default function RootLayout({
       <body>
         <div className="page-shell">
           <nav className="site-nav" aria-label="Primary">
-            <a href="#top" className="brand">
+            <a href="/" className="brand">
               Rishabh Mathur
             </a>
             <div className="nav-links">
-              <a href="#top">Home</a>
-              <a href="#posts">Writing</a>
+              <a href="/">Home</a>
+              <a href="/projects">Projects</a>
+              <a href="/archive">Writing</a>
               <a href="mailto:rishabh@example.com">Contact</a>
             </div>
           </nav>
