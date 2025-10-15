@@ -41,9 +41,7 @@ export default function Home() {
       </section>
 
       <section className="projects" id="projects">
-        <div className="projects-header">
-          <h2>Recent projects</h2>
-        </div>
+        <h2>Recent projects</h2>
         <div className="projects-grid">
           {projects.map((project) => (
             <article key={project.name} className="project-card">
@@ -64,9 +62,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <a className="see-more" href="projects">
-          See more →
-        </a>
+        <a className="see-more" href="projects">See more →</a>
       </section>
 
       <section id="posts" className="posts">
@@ -90,11 +86,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <div className="posts-footer">
-          <a className="see-more" href="archive">
-            See more →
-          </a>
-        </div>
+        <a className="see-more" href="archive">See more →</a>
       </section>
     </main>
   );
