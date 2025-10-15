@@ -43,7 +43,7 @@ export default function Home() {
       <section className="page-section projects" id="projects">
         <div className="projects-header">
           <h2>Recent projects</h2>
-          <a className="see-more" href="/projects">
+          <a className="see-more" href="projects">
             See more →
           </a>
         </div>
@@ -91,7 +91,7 @@ export default function Home() {
           ))}
         </ul>
         <div className="posts-footer">
-          <a className="see-more" href="/archive">
+          <a className="see-more" href="archive">
             See more →
           </a>
         </div>
