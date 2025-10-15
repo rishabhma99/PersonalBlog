@@ -1,3 +1,4 @@
+import { experience } from "./data/experience";
 import { posts } from "./data/posts";
 import { projects } from "./data/projects";
 
@@ -13,7 +14,7 @@ export default function Home() {
         </p>
       </header>
 
-      <section className="career">
+      <section className="career" id="career">
         <div className="career-inner">
           <header>
             <h2>Career snapshot</h2>
@@ -26,36 +27,23 @@ export default function Home() {
           </header>
 
           <ul className="timeline">
-            <li className="timeline-item">
-              <strong>Lead Software Engineer · Stellar Systems</strong>
-              <span>2022 — Present</span>
-              <p>
-                Shaping web experiences for millions while mentoring designers
-                and engineers.
-              </p>
-            </li>
-            <li className="timeline-item">
-              <strong>Senior Frontend Engineer · Horizon Labs</strong>
-              <span>2018 — 2022</span>
-              <p>
-                Drove the design system initiative and built reusable app
-                primitives.
-              </p>
-            </li>
-            <li className="timeline-item">
-              <strong>Founding Engineer · Aurora Startups</strong>
-              <span>2014 — 2018</span>
-              <p>
-                Wore every hat: product discovery, prototyping, and full-stack
-                delivery.
-              </p>
-            </li>
+            {experience.map((entry) => (
+              <li key={`${entry.role}-${entry.company}`} className="timeline-item">
+                <strong>
+                  {entry.company}, {entry.role}
+                </strong>
+                <span>{entry.dates}</span>
+                <p>{entry.summary}</p>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
 
       <section className="projects" id="projects">
-        <h2>Recent projects</h2>
+        <div className="projects-header">
+          <h2>Recent projects</h2>
+        </div>
         <div className="projects-grid">
           {projects.map((project) => (
             <article key={project.name} className="project-card">
@@ -76,6 +64,9 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <a className="see-more" href="/projects">
+          See more →
+        </a>
       </section>
 
       <section id="posts" className="posts">
