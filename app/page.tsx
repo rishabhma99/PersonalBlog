@@ -1,67 +1,84 @@
-const posts = [
-  {
-    title: "Building My Personal Space",
-    description:
-      "A quick tour of the tech stack and goals for this site as it evolves.",
-    date: "2024-05-01",
-  },
-  {
-    title: "Recent Experiments",
-    description:
-      "Notes from prototypes, side projects, and weekend rabbit holes.",
-    date: "2024-04-12",
-  },
-  {
-    title: "Reading List",
-    description:
-      "Articles, books, and papers that resonated with me this month.",
-    date: "2024-03-26",
-  },
-];
+import { posts } from "./data/posts";
 
 export default function Home() {
   return (
-    <main className="container">
+    <main className="container" id="top">
       <header className="hero">
-        <span aria-hidden="true" className="dot" />
         <h1>Hi, I&apos;m Rishabh.</h1>
         <p>
           I build thoughtful software and write about the process. This is the
           home for my notes on engineering, learning, and the things that keep
           me curious.
         </p>
-        <div className="cta-group">
-          <a className="button primary" href="#posts">
-            Read the blog
-          </a>
-          <a className="button secondary" href="mailto:rishabh@example.com">
-            Say hello
-          </a>
-        </div>
       </header>
+
+      <section className="career">
+        <div className="career-inner">
+          <header>
+            <h2>Career snapshot</h2>
+            <p>
+              Over the last decade I&apos;ve shipped products across startups
+              and large teams. From crafting pixel-perfect interfaces to scaling
+              platform infrastructure, I enjoy finding elegant solutions to
+              messy problems.
+            </p>
+          </header>
+
+          <ul className="timeline">
+            <li className="timeline-item">
+              <strong>Lead Software Engineer · Stellar Systems</strong>
+              <span>2022 — Present</span>
+              <p>
+                Shaping web experiences for millions while mentoring designers
+                and engineers.
+              </p>
+            </li>
+            <li className="timeline-item">
+              <strong>Senior Frontend Engineer · Horizon Labs</strong>
+              <span>2018 — 2022</span>
+              <p>
+                Drove the design system initiative and built reusable app
+                primitives.
+              </p>
+            </li>
+            <li className="timeline-item">
+              <strong>Founding Engineer · Aurora Startups</strong>
+              <span>2014 — 2018</span>
+              <p>
+                Wore every hat: product discovery, prototyping, and full-stack
+                delivery.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
 
       <section id="posts" className="posts">
         <h2>Latest writing</h2>
-        <ul>
+        <ul className="post-list">
           {posts.map((post) => (
             <li key={post.title}>
-              <article>
-                <time dateTime={post.date}>
-                  {new Date(post.date).toLocaleDateString(undefined, {
-                    month: "short",
-                    day: "2-digit",
-                    year: "numeric",
-                  })}
-                </time>
-                <h3>{post.title}</h3>
+              <article className="post-card">
+                <div className="post-heading">
+                  <h3>{post.title}</h3>
+                  <time dateTime={post.date}>
+                    {new Date(post.date).toLocaleDateString(undefined, {
+                      month: "short",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}
+                  </time>
+                </div>
                 <p>{post.description}</p>
-                <button type="button" className="inline-link">
-                  Coming soon
-                </button>
               </article>
             </li>
           ))}
         </ul>
+        <div className="posts-footer">
+          <a className="see-more" href="/archive">
+            See more →
+          </a>
+        </div>
       </section>
     </main>
   );

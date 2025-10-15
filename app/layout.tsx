@@ -13,7 +13,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="page-shell">
+          <nav className="site-nav" aria-label="Primary">
+            <a href="#top" className="brand">
+              Rishabh Mathur
+            </a>
+            <div className="nav-links">
+              <a href="#top">Home</a>
+              <a href="#posts">Writing</a>
+              <a href="mailto:rishabh@example.com">Contact</a>
+            </div>
+          </nav>
+          <div className="page-content">{children}</div>
+        </div>
+      </body>
     </html>
   );
 }
