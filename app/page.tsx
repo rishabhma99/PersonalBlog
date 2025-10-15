@@ -43,9 +43,7 @@ export default function Home() {
       <section className="page-section projects" id="projects">
         <div className="projects-header">
           <h2>Recent projects</h2>
-          <a className="see-more" href="projects">
-            See more →
-          </a>
+
         </div>
         <div className="projects-grid">
           {projects.map((project) => (
@@ -66,6 +64,11 @@ export default function Home() {
               </ul>
             </article>
           ))}
+        </div>
+        <div className="posts-footer">
+          <a className="see-more" href="projects">
+            See more →
+          </a>
         </div>
       </section>
 
