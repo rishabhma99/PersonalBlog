@@ -2,23 +2,24 @@
 
 import { useCallback, type MouseEvent } from "react";
 
-type NavLink = {
+type SectionLink = {
   label: string;
-  href: string;
-  targetId?: string;
+  targetId: string;
 };
 
-const navLinks: NavLink[] = [
-  { label: "Home", href: "/#top", targetId: "top" },
-  { label: "Career", href: "/#career", targetId: "career" },
-  { label: "Projects", href: "/#projects", targetId: "projects" },
-  { label: "Writing", href: "/#posts", targetId: "posts" },
+const sectionLinks: SectionLink[] = [
+  { label: "Home", targetId: "top" },
+  { label: "Career", targetId: "career" },
+  { label: "Projects", targetId: "projects" },
+  { label: "Writing", targetId: "posts" },
 ];
 
-const CONTACT_LINK: NavLink = {
+const contactLink = {
   label: "Contact",
   href: "mailto:rishabh@example.com",
 };
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const easing = (t: number) => t * t * t;
 
@@ -50,45 +51,80 @@ const scrollWithAcceleration = (target: HTMLElement, duration = 700) => {
 };
 
 const SideNav = () => {
+  const getHrefForSection = useCallback((targetId: string) => {
+    const hashPath = `/#${targetId}`;
+    if (!basePath) {
+      return hashPath;
+    }
+
+    const normalisedBase = basePath.endsWith("/")
+      ? basePath.slice(0, -1)
+      : basePath;
+
+    return `${normalisedBase}${hashPath}`;
+  }, []);
+
+  const isHomePath = useCallback(() => {
+    const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+    if (!basePath) {
+      return currentPath === "/";
+    }
+
+    const normalisedBase =
+      basePath.replace(/\/+$/, "") === "" ? "/" : basePath.replace(/\/+$/, "");
+    return currentPath === normalisedBase;
+  }, []);
+
   const handleNavClick = useCallback(
-    (event: MouseEvent<HTMLAnchorElement>, link: NavLink) => {
-      if (!link.targetId || typeof window === "undefined") {
+    (
+      event: MouseEvent<HTMLAnchorElement>,
+      targetId: string,
+      resolvedHref: string
+    ) => {
+      if (typeof window === "undefined") {
         return;
       }
 
-      const isHomePage = window.location.pathname === "/";
-      if (!isHomePage) {
+      if (!isHomePath()) {
         return;
       }
 
-      const targetElement = document.getElementById(link.targetId);
+      const targetElement = document.getElementById(targetId);
       if (!targetElement) {
         return;
       }
 
       event.preventDefault();
       scrollWithAcceleration(targetElement);
-      window.history.replaceState(null, "", link.href);
+      window.history.replaceState(null, "", resolvedHref);
     },
-    []
+    [isHomePath]
   );
+
+  const homeHref = basePath ? `${basePath.replace(/\/+$/, "") || ""}/` : "/";
 
   return (
     <nav className="site-nav" aria-label="Primary">
-      <a href="/" className="brand">
+      <a href={homeHref} className="brand">
         Rishabh Mathur
       </a>
       <div className="nav-links">
-        {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            onClick={(event) => handleNavClick(event, link)}
-          >
-            {link.label}
-          </a>
-        ))}
-        <a href={CONTACT_LINK.href}>{CONTACT_LINK.label}</a>
+        {sectionLinks.map((link) => {
+          const resolvedHref = getHrefForSection(link.targetId);
+
+          return (
+            <a
+              key={link.targetId}
+              href={resolvedHref}
+              onClick={(event) =>
+                handleNavClick(event, link.targetId, resolvedHref)
+              }
+            >
+              {link.label}
+            </a>
+          );
+        })}
+        <a href={contactLink.href}>{contactLink.label}</a>
       </div>
     </nav>
   );
