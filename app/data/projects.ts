@@ -18,7 +18,6 @@ export const projects: Project[] = [
     summary:
       "Lightweight note-taking app designed for engineers to capture experiments and findings quickly.",
     tech: ["Remix", "SQLite", "Tailwind"],
-    url: "https://example.com/signal-canvas",
   },
   {
     name: "Edge Atlas",

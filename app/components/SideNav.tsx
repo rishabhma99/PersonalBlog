@@ -160,7 +160,6 @@ const SideNav = () => {
             </a>
           );
         })}
-        <a href={contactLink.href}>{contactLink.label}</a>
       </div>
     </nav>
   );
