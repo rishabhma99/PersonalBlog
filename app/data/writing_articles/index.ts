@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import OntologyArticle, {
-  metadata as ontologyMetadata,
-  slug as ontologySlug,
-  summary as ontologySummary,
-} from "./ontology";
 
 type ArticleModule = {
-  Component: () => JSX.Element;
+  default: () => JSX.Element;
   metadata: Metadata;
+  slug: string;
   summary: {
     title: string;
     description: string;
@@ -15,13 +11,36 @@ type ArticleModule = {
   };
 };
 
-export const articles: Record<string, ArticleModule> = {
-  [ontologySlug]: {
-    Component: OntologyArticle,
-    metadata: ontologyMetadata,
-    summary: ontologySummary,
-  },
-};
+// Webpack adds require.context at build time in Next.js.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const requireArticle = (require as any).context("./", false, /\.tsx$/);
+
+const entries = requireArticle.keys().map((path: string) => {
+  const articleModule = requireArticle(path) as ArticleModule;
+  const slug = articleModule.slug ?? path.replace("./", "").replace(/\.tsx$/, "");
+
+  return [
+    slug,
+    {
+      Component: articleModule.default,
+      metadata: articleModule.metadata,
+      summary: articleModule.summary,
+    },
+  ] as const;
+});
+
+export const articles = Object.fromEntries(entries) satisfies Record<
+  string,
+  {
+    Component: () => JSX.Element;
+    metadata: Metadata;
+    summary: {
+      title: string;
+      description: string;
+      date: string;
+    };
+  }
+>;
 
 export const articleSlugs = Object.keys(articles);
 
