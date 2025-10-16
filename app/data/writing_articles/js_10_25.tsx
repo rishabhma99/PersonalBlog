@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Jane Street Puzzle - Robot Baseball",
+  title: "Jane Street Puzzle Robot Baseball",
   description:
     "An example article that walks through the foundations of this personal site and how to evolve it.",
 };
