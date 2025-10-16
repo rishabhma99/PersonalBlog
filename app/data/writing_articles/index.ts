@@ -1,3 +1,6 @@
+import { createRequire } from "module";
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 
 type ArticleModule = {
@@ -11,13 +14,18 @@ type ArticleModule = {
   };
 };
 
-// Webpack adds require.context at build time in Next.js.
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const requireArticle = (require as any).context("./", false, /\.tsx$/);
+const articlesDir = path.join(process.cwd(), "app/data/writing_articles");
+const requireArticle = createRequire(import.meta.url);
 
-const entries = requireArticle.keys().map((path: string) => {
-  const articleModule = requireArticle(path) as ArticleModule;
-  const slug = articleModule.slug ?? path.replace("./", "").replace(/\.tsx$/, "");
+const articleFiles = fs
+  .readdirSync(articlesDir)
+  .filter((file) => file.endsWith(".tsx") && file !== "index.tsx");
+
+const entries = articleFiles.map((file) => {
+  const modulePath = path.join(articlesDir, file);
+  const articleModule = requireArticle(modulePath) as ArticleModule;
+  const slug =
+    articleModule.slug ?? file.replace(/\.tsx$/, "");
 
   return [
     slug,
