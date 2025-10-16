@@ -52,5 +52,6 @@ export const articleSummaries = articleSlugs
   }))
   .sort(
     (a, b) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime()
+      new Date(b.date + "T00:00:00").getTime() -
+      new Date(a.date + "T00:00:00").getTime()
   );

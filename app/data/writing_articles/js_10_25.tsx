@@ -6,13 +6,13 @@ export const metadata: Metadata = {
     "An example article that walks through the foundations of this personal site and how to evolve it.",
 };
 
-export const slug = "test";
+export const slug = "js-2025-10";
 export const summary = {
   title: metadata.title ?? "Building a Personal Blog With Next.js",
   description:
     metadata.description ??
     "An example article that walks through the foundations of this personal site and how to evolve it.",
-  date: "2024-06-12",
+  date: "2025-10-17",
 };
 
 export default function TestArticle() {
@@ -22,7 +22,7 @@ export default function TestArticle() {
         <header className="article-header">
           <p className="article-eyebrow">Example Article</p>
           <h1>Building a Personal Blog With Next.js</h1>
-          <p className="article-meta">June 12, 2024 · 6 min read</p>
+          <p className="article-meta">October 17, 2025 · 6 min read</p>
         </header>
 
         <section className="article-section">

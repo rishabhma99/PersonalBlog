@@ -84,12 +84,15 @@ export default function Home() {
                       {post.title}
                     </Link>
                   </h3>
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString(undefined, {
-                      month: "short",
-                      day: "2-digit",
-                      year: "numeric",
-                    })}
+                 <time dateTime={post.date}>
+                    {new Date(post.date + "T00:00:00").toLocaleDateString(
+                      undefined,
+                      {
+                        month: "short",
+                        day: "2-digit",
+                        year: "numeric",
+                      }
+                    )}
                   </time>
                 </div>
                 <p>{post.description}</p>

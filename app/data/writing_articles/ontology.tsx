@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Building a Personal Blog With Next.js",
+  title: "Anselm's Ontological Argument",
   description:
-    "An example article that walks through the foundations of this personal site and how to evolve it.",
+    "An analysis of Anselm's Ontological Argument for the existence of God",
 };
 
 export const slug = "ontology";
 export const summary = {
-  title: metadata.title ?? "Building a Personal Blog With Next.js",
-  description:
-    metadata.description ??
-    "An example article that walks through the foundations of this personal site and how to evolve it.",
-  date: "2024-06-12",
+  title: metadata.title,
+  description: metadata.description,
+  date: "2025-10-16",
 };
 
 export default function OntologyArticle() {
@@ -20,9 +18,9 @@ export default function OntologyArticle() {
     <main className="article-container">
       <article className="article">
         <header className="article-header">
-          <p className="article-eyebrow">Example Article</p>
-          <h1>Building a Personal Blog With Next.js</h1>
-          <p className="article-meta">June 12, 2024 · 6 min read</p>
+          <p className="article-eyebrow">{summary.title}</p>
+          <h1>A Refutation of Anslem's Ontological Argument</h1>
+          <p className="article-meta">{summary.date} · 6 min read</p>
         </header>
 
         <section className="article-section">
