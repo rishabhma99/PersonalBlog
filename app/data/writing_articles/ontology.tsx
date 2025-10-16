@@ -8,8 +8,11 @@ export const metadata: Metadata = {
 
 export const slug = "ontology";
 export const summary = {
-  title: metadata.title,
-  description: metadata.description,
+  title: String(metadata.title ?? "Anselm's Ontological Argument"),
+  description: String(
+    metadata.description ??
+      "An analysis of Anselm's Ontological Argument for the existence of God"
+  ),
   date: "2025-10-16",
 };
 
