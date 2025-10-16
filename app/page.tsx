@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { experience } from "./data/experience";
 import { posts } from "./data/posts";
 import { projects } from "./data/projects";
@@ -43,10 +44,9 @@ export default function Home() {
       <section className="page-section projects" id="projects">
         <div className="projects-header">
           <h2>Recent projects</h2>
-
         </div>
         <div className="projects-grid">
-          {projects.slice(0,3).map((project) => (
+          {projects.slice(0, 3).map((project) => (
             <article key={project.name} className="project-card">
               <div className="project-heading">
                 <h3>{project.name}</h3>
@@ -65,21 +65,29 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="posts-footer">
-          <a className="see-more" href="projects">
+        <div className="section-footer">
+          <Link className="see-more" href="/projects/">
             See more →
-          </a>
+          </Link>
         </div>
       </section>
 
       <section id="posts" className="page-section posts">
         <h2>Latest writing</h2>
         <ul className="post-list">
-          {posts.slice(0,3).map((post) => (
+          {posts.slice(0, 3).map((post) => (
             <li key={post.title}>
               <article className="post-card">
                 <div className="post-heading">
-                  <h3>{post.title}</h3>
+                  <h3>
+                    {post.url ? (
+                      <Link className="post-title-link" href={post.url}>
+                        {post.title}
+                      </Link>
+                    ) : (
+                      post.title
+                    )}
+                  </h3>
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString(undefined, {
                       month: "short",
@@ -93,10 +101,10 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <div className="posts-footer">
-          <a className="see-more" href="archive">
+        <div className="section-footer">
+          <Link className="see-more" href="/archive/">
             See more →
-          </a>
+          </Link>
         </div>
       </section>
     </main>

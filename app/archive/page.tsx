@@ -1,4 +1,5 @@
 import { posts } from "../data/posts";
+import Link from "next/link";
 
 export default function ArchivePage() {
   return (
@@ -19,7 +20,15 @@ export default function ArchivePage() {
             <li key={post.title}>
               <article className="post-card">
                 <div className="post-heading">
-                  <h3>{post.title}</h3>
+                  <h3>
+                    {post.url ? (
+                      <Link className="post-title-link" href={post.url}>
+                        {post.title}
+                      </Link>
+                    ) : (
+                      post.title
+                    )}
+                  </h3>
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString(undefined, {
                       month: "short",
