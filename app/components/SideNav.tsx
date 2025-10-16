@@ -93,22 +93,22 @@ const SideNav = () => {
     []
   );
 
-  const isHomePath = useCallback(() => {
-    const currentPath =
-      window.location.pathname.replace(/\/+$/, "") || "/";
+const isHomePath = useCallback(() => {
+  const currentPath =
+    window.location.pathname.replace(/\/+$/, "") || "/";
 
-    if (!normalisedBasePath) {
-      return currentPath === "/";
-    }
+  if (!normalisedBasePath) {
+    return currentPath === "/";
+  }
 
-    const normalisedCurrent =
-      currentPath === "" ? "/" : currentPath;
+  const normalisedCurrent =
+    currentPath === "" ? "/" : currentPath;
 
-    return (
-      normalisedCurrent === normalisedBasePath ||
-      normalisedCurrent === `${normalisedBasePath}`
-    );
-  }, [normalisedBasePath]);
+  return (
+    normalisedCurrent === normalisedBasePath ||
+    normalisedCurrent === `${normalisedBasePath}`
+  );
+}, []);
 
   const handleNavClick = useCallback(
     (
