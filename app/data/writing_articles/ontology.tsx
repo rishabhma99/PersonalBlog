@@ -6,6 +6,15 @@ export const metadata: Metadata = {
     "An example article that walks through the foundations of this personal site and how to evolve it.",
 };
 
+export const slug = "ontology";
+export const summary = {
+  title: metadata.title ?? "Building a Personal Blog With Next.js",
+  description:
+    metadata.description ??
+    "An example article that walks through the foundations of this personal site and how to evolve it.",
+  date: "2024-06-12",
+};
+
 export default function OntologyArticle() {
   return (
     <main className="article-container">

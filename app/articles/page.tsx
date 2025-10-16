@@ -1,5 +1,5 @@
-import { posts } from "../data/posts";
 import Link from "next/link";
+import { posts } from "../data/posts";
 
 export default function ArchivePage() {
   return (
@@ -21,13 +21,9 @@ export default function ArchivePage() {
               <article className="post-card">
                 <div className="post-heading">
                   <h3>
-                    {post.url ? (
-                      <Link className="post-title-link" href={post.url}>
-                        {post.title}
-                      </Link>
-                    ) : (
-                      post.title
-                    )}
+                    <Link className="post-title-link" href={post.url}>
+                      {post.title}
+                    </Link>
                   </h3>
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString(undefined, {

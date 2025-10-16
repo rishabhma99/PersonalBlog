@@ -12,7 +12,7 @@ const sectionLinks: SectionLink[] = [
   { label: "Home", targetId: "top", fallbackPath: "/" },
   { label: "Career", targetId: "career" },
   { label: "Projects", targetId: "projects", fallbackPath: "/projects/" },
-  { label: "Writing", targetId: "posts", fallbackPath: "/archive/" },
+  { label: "Writing", targetId: "posts", fallbackPath: "/articles/" },
 ];
 
 const contactLink = {

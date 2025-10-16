@@ -80,13 +80,9 @@ export default function Home() {
               <article className="post-card">
                 <div className="post-heading">
                   <h3>
-                    {post.url ? (
-                      <Link className="post-title-link" href={post.url}>
-                        {post.title}
-                      </Link>
-                    ) : (
-                      post.title
-                    )}
+                    <Link className="post-title-link" href={post.url}>
+                      {post.title}
+                    </Link>
                   </h3>
                   <time dateTime={post.date}>
                     {new Date(post.date).toLocaleDateString(undefined, {
@@ -102,7 +98,7 @@ export default function Home() {
           ))}
         </ul>
         <div className="section-footer">
-          <Link className="see-more" href="/archive/">
+          <Link className="see-more" href="/articles/">
             See more →
           </Link>
         </div>
