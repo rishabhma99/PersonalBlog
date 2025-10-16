@@ -12,9 +12,6 @@ const nextConfig = {
   trailingSlash: true,
   env: {
     NEXT_PUBLIC_BASE_PATH: assetPrefix
-  },
-  experimental: {
-    typedRoutes: true
   }
 };
 
