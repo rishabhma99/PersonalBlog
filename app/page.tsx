@@ -46,7 +46,7 @@ export default function Home() {
 
         </div>
         <div className="projects-grid">
-          {projects.map((project) => (
+          {projects.slice(0,3).map((project) => (
             <article key={project.name} className="project-card">
               <div className="project-heading">
                 <h3>{project.name}</h3>
@@ -75,7 +75,7 @@ export default function Home() {
       <section id="posts" className="page-section posts">
         <h2>Latest writing</h2>
         <ul className="post-list">
-          {posts.map((post) => (
+          {posts.slice(0,3).map((post) => (
             <li key={post.title}>
               <article className="post-card">
                 <div className="post-heading">
