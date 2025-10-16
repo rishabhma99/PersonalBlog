@@ -19,7 +19,7 @@ export default function OntologyArticle() {
       <article className="article">
         <header className="article-header">
           <p className="article-eyebrow">{summary.title}</p>
-          <h1>A Refutation of Anslem's Ontological Argument</h1>
+          <h1>A Refutation of Anslem&apos;'s Ontological Argument</h1>
           <p className="article-meta">{summary.date} · 6 min read</p>
         </header>
 
