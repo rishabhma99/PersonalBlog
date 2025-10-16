@@ -8,10 +8,9 @@ export const metadata: Metadata = {
 
 export const slug = "js1025";
 export const summary = {
-  title: metadata.title ?? "-",
+  title: metadata.title,
   description:
-    metadata.description ??
-    "-",
+  metadata.description,
   date: "2025-10-16",
 };
 
