@@ -23,11 +23,11 @@ export default function OntologyArticle() {
         <header className="article-header">
           <p className="article-eyebrow">{summary.title}</p>
           <h1>A Refutation of Anslem&apos;s Ontological Argument</h1>
-          <p className="article-meta">{summary.date} · 6 min read</p>
+          <p className="article-meta">{summary.date} · 2 min read</p>
         </header>
 
         <section className="article-section">
-          <h2>Why start with a simple scaffold?</h2>
+          <h2>Introduction</h2>
           <p>
             I was recently presented with ‘Anselm's Ontological Argument’ for the existence of God, and was told to find the most apparent flaws present within. An Ontological Argument varies from other arguments where it deduces the existence of God from a simple definition of God and argues that God's existence must be logically entailed from that initial definition.
           </p>
@@ -36,6 +36,7 @@ export default function OntologyArticle() {
             Personally, I have no experience with philosophy so it was an interesting exercise to carry through, and I am also very out of practice with writing, so I thought it would be good to finally unrot my brain.
           </p>
 
+          <h2>The Argument</h2>
           <p>
             Using <a href="https://www.princeton.edu/~grosen/pucourse/phi203/ontological.html" target="_blank" rel="noopener">https://www.princeton.edu/~grosen/pucourse/phi203/ontological.html</a> as source material – which includes the initial unadulterated words as well an interpretation of these words – the argument goes something like:
           </p>
@@ -59,6 +60,7 @@ export default function OntologyArticle() {
             </ol>              
           </blockquote>
 
+          <h2>My thoughts</h2>
           <p>On the initial reading, there were a few semantic issues with the argument, which probably didn’t invalidate it, but I still found it noteworthy.</p>
 
           <p>Firstly, the initial jump from A → B → C did not seem as trivial as Anselm made it sound. It is not necessarily obvious – at least to me – that <em>‘a being than which no greater being can be conceived’</em> can <em>‘be conceived to exist in reality’</em>. I personally feel that the concept is understandable: any attribute that is associated with this ‘being’ can be thought of as being a) present and b) the ‘greatest’ that can be imagined. However, we cannot easily imagine that embodied in reality – any such attempts could easily be refuted with a counterexample, as I’ll explain later.</p>
